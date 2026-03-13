@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DELTA | الحالة</title>
+    $(if refresh-timeout)
+    <meta http-equiv="refresh" content="$(refresh-timeout-secs)">
+    $(endif)
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="ramadan.css">
+    <link rel="stylesheet" href="icons.css">
+
+    <script>
+        $(if advert-pending == 'yes')
+            var popup = '';
+            function focusAdvert() {
+                if (window.focus) popup.focus();
+            }
+            function openAdvert() {
+                popup = open('$(link-advert)', 'hotspot_advert', '');
+                setTimeout("focusAdvert()", 1000);
+            }
+        $(endif)
+        function openLogout() {
+            if (window.name != 'hotspot_status') return true;
+            open('$(link-logout)', 'hotspot_logout', 'toolbar=0,location=0,directories=0,status=0,menubars=0,resizable=1,width=280,height=250');
+            window.close();
+            return false;
+        }
+    </script>
+</head>
+<body $(if advert-pending == 'yes') onLoad="openAdvert()" $(endif)>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                
+                <div class="main-card animated bounceInDown">
+                    <div class="brand-header">
+                        <img src="logo.png" alt="Delta Egypt" class="ramadan-logo">
+                        <h3 class="brand-title">حالة الاتصال</h3>
+                        <p class="brand-subtitle">متصل الآن</p>
+                    </div>
+
+                    <div class="alert alert-info">
+                        أهلاً بك يا <strong>$(username)</strong> - عيد فطر مبارك
+                    </div>
+
+                    <form action="$(link-logout)" name="logout" onSubmit="return openLogout()">
+                        
+                        <!-- Gauges Dashboard -->
+                        <div class="gauges-container">
+                            
+                            <!-- Uptime Gauge -->
+                            $(if uptime)
+                            <div class="gauge-card">
+                                <div class="gauge-circle">
+                                    <span class="glyphicon glyphicon-time" style="font-size: 1.5em;"></span>
+                                </div>
+                                <div class="gauge-label">مدة الاتصال</div>
+                                <div class="gauge-value">$(uptime)</div>
+                            </div>
+                            $(endif)
+
+                            <!-- Download/Upload Gauge -->
+                            <div class="gauge-card">
+                                <div class="gauge-circle">
+                                    <span class="glyphicon glyphicon-transfer" style="font-size: 1.5em;"></span>
+                                </div>
+                                <div class="gauge-label">تحميل / رفع</div>
+                                <div class="gauge-value" style="font-size: 0.9em;">$(bytes-in-nice) <br> $(bytes-out-nice)</div>
+                            </div>
+
+                            <!-- Time Left Gauge -->
+                            $(if session-time-left)
+                            <div class="gauge-card">
+                                <div class="gauge-circle">
+                                    <span class="glyphicon glyphicon-hourglass" style="font-size: 1.5em;"></span>
+                                </div>
+                                <div class="gauge-label">الوقت المتبقي</div>
+                                <div class="gauge-value">$(session-time-left)</div>
+                            </div>
+                            $(endif)
+
+                            <!-- Data Left Gauge (Dynamic) -->
+                            $(if remain-bytes-total)
+                            <div class="gauge-card" id="data-card" data-used="$(bytes-total)" data-remain="$(remain-bytes-total)">
+                                <div class="gauge-circle dynamic">
+                                    <div class="gauge-ring" id="data-ring"></div>
+                                    <span class="glyphicon glyphicon-hdd gauge-icon" style="font-size: 1.5em;"></span>
+                                </div>
+                                <div class="gauge-label">استهلاك الباقة</div>
+                                <div class="gauge-value">
+                                    <span id="data-percent" style="font-size: 1.2em; display: block;">0%</span>
+                                    <div style="font-size: 0.8em; opacity: 0.7; direction: ltr;">$(remain-bytes-total-nice) left</div>
+                                </div>
+                            </div>
+                            <script>
+                                (function(){
+                                    var card = document.getElementById('data-card');
+                                    if(card){
+                                        // Mikrotik variables often include units or are raw. Assuming raw for logic.
+                                        // If raw: simple parseInt.
+                                        // If nice: we rely on raw variables passed in data attributes.
+                                        var used = parseInt(card.getAttribute('data-used')) || 0;
+                                        var remain = parseInt(card.getAttribute('data-remain')) || 0;
+                                        var total = used + remain;
+                                        if(total > 0){
+                                            var percent = Math.round((used / total) * 100);
+                                            // Clamp between 0 and 100
+                                            percent = Math.max(0, Math.min(100, percent));
+                                            
+                                            var ring = document.getElementById('data-ring');
+                                            if(ring) {
+                                                ring.style.setProperty('--percent', percent + '%');
+                                                // Change color if near limit
+                                                if(percent > 90) {
+                                                    ring.style.setProperty('--gold-primary', '#ff4444');
+                                                }
+                                            }
+                                            var text = document.getElementById('data-percent');
+                                            if(text) text.innerText = percent + '%';
+                                        }
+                                    }
+                                })();
+                            </script>
+                            $(endif)
+
+                        </div>
+                        
+                        <!-- Hidden IP Info (Optional, kept for reference but hidden from main view to clean up) -->
+                        <div class="muted" style="text-align: center; margin-bottom: 20px; font-size: 0.9em;">
+                            IP: $(ip)
+                        </div>
+
+                        <button type="submit" class="btn btn-logout btn-block btn-lg">تسجيل الخروج</button>
+                    </form>
+                    
+                    <div class="page-footer">
+                        <div class="contact-pill">
+                            <span class="label">الدعم الفني:</span>
+                            <span dir="ltr" style="color: var(--gold-primary); font-weight: 700;">01222272449</span>
+                        </div>
+                        <div style="margin-top: 10px;">Delta Egypt For Network</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

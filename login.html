@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DELTA | تسجيل الدخول</title>
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="expires" content="-1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    
+    <!-- Bootstrap & Custom Styles -->
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="ramadan.css">
+    <link rel="stylesheet" href="icons.css">
+</head>
+<body>
+ 
+
+    <!-- Hidden Form for CHAP Login Logic -->
+    $(if chap-id)
+    <form name="sendin" action="$(link-login-only)" method="post">
+        <input type="hidden" name="username" />
+        <input type="hidden" name="password" />
+        <input type="hidden" name="dst" value="$(link-orig)" />
+        <input type="hidden" name="popup" value="true" />
+    </form>
+    <script type="text/javascript" src="/md5.js"></script>
+    <script type="text/javascript">
+        function doLogin() {
+            document.sendin.username.value = document.login.username.value;
+            document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value + '$(chap-challenge)');
+            document.sendin.submit();
+            return false;
+        }
+        function doLoginMem() {
+            document.sendin.username.value = document.login_mem.username.value;
+            document.sendin.password.value = hexMD5('$(chap-id)' + document.login_mem.password.value + '$(chap-challenge)');
+            document.sendin.submit();
+            return false;
+        }
+    </script>
+    $(endif)
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                
+                <div class="form-signin animated bounceInDown">
+                    
+                    <div class="brand-header">
+                        <img src="logo.png" alt="Delta Egypt" class="brand-logo">
+                        <h2 class="brand-title">DELTA</h2>
+                        <p class="brand-subtitle">مرحبا بكم في شبكة دلتا مصر</p>
+                    </div>
+
+                    $(if error)
+                    <div class="alert-error">$(error)</div>
+                    $(endif)
+
+                    <!-- QR Code Login Button -->
+                    <div class="qr-container">
+                         <button class="btn btn-block btn-qr" type="button" onclick="window.location='https://laksa19.github.io/myqr';">
+                            الدخول عن طريق QR Code
+                        </button>
+                    </div>
+
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active">
+                            <a href="#voucher" aria-controls="voucher" role="tab" data-toggle="tab">كروت الشحن</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#member" aria-controls="member" role="tab" data-toggle="tab">الأعضاء</a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content login-tabs">
+                        <div role="tabpanel" class="tab-pane active" id="voucher">
+                            <form name="login" action="$(link-login-only)" method="post" $(if chap-id) onSubmit="return doLogin()" $(endif)>
+                                <input type="hidden" name="dst" value="$(link-orig)" />
+                                <input type="hidden" name="popup" value="true" />
+                                
+                                <div class="form-group">
+                                    <input type="text" name="username" class="form-control" placeholder="أدخل رقم الكارت هنا" required autofocus autocomplete="off" onchange="document.getElementById('pass_voucher').value = this.value">
+                                    <input type="hidden" name="password" id="pass_voucher">
+                                </div>
+                                
+                                <button class="btn btn-primary btn-block btn-login" type="submit">دخول الشبكة</button>
+                            </form>
+                        </div>
+
+                        <div role="tabpanel" class="tab-pane" id="member">
+                            <form name="login_mem" action="$(link-login-only)" method="post" $(if chap-id) onSubmit="return doLoginMem()" $(endif)>
+                                <input type="hidden" name="dst" value="$(link-orig)" />
+                                <input type="hidden" name="popup" value="true" />
+                                
+                                <div class="form-group">
+                                    <input type="text" name="username" class="form-control" placeholder="اسم المستخدم" required autocomplete="off">
+                                </div>
+                                <div class="form-group" style="margin-top: 10px;">
+                                    <input type="password" name="password" class="form-control" placeholder="كلمة المرور" required autocomplete="off">
+                                </div>
+
+                                <button class="btn btn-success btn-block btn-login" type="submit">دخول الأعضاء</button>
+                            </form>
+                        </div>
+                    </div>
+
+                 
+                </div>
+
+                <div class="page-footer">
+                    <div class="contact-pill">
+                        <span class="label">الدعم الفني:</span>
+                        <span dir="ltr" style="color: var(--gold-primary); font-weight: 700;">01222272449</span>
+                    </div>
+                    <div style="margin-top: 10px;">عيد فطر مبارك - كل عام وأنتم بخير</div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            var root = document.querySelector('.form-signin') || document;
+            var links = root.querySelectorAll('a[data-toggle="tab"]');
+            var tabContent = root.querySelector('.tab-content');
+            if (!links.length || !tabContent) return;
+
+            function activate(link) {
+                var targetId = link.getAttribute('href');
+                if (!targetId || targetId.charAt(0) !== '#') return;
+
+                var li = link.parentElement;
+                var ul = li && li.parentElement;
+                if (ul) {
+                    Array.prototype.forEach.call(ul.children, function (item) {
+                        if (item.classList) item.classList.remove('active');
+                    });
+                    if (li.classList) li.classList.add('active');
+                }
+
+                Array.prototype.forEach.call(tabContent.querySelectorAll('.tab-pane'), function (pane) {
+                    pane.classList.remove('active');
+                });
+                var target = root.querySelector(targetId) || document.querySelector(targetId);
+                if (target) target.classList.add('active');
+            }
+
+            Array.prototype.forEach.call(links, function (link) {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    activate(link);
+                });
+            });
+        })();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,132 @@
+
+
+/* HEADER */
+.site-header {
+}
+.site-header h1 {
+	color: #767676;
+	margin: 0;
+	font-size: 28px;
+	text-align: center;
+	text-shadow: #dcdcdc 0px 1px 0px;
+}
+.site-header h2 {
+	color: #767676;
+	margin: 0;
+	font-size: 14px;
+	font-weight: 400;
+	font-style: italic;
+	text-align: center;
+	text-shadow: #dcdcdc 0px 1px 0px;
+}
+.main-menu {
+	margin-top: 15px;
+	text-align: center;
+	color: #fff;
+}
+
+.main-menu a {
+	margin-right: 10px;
+	color: #0dbbdb;
+}
+.main-menu a :active {
+	background-image:none;
+	outline:0;
+	color: #0dbbdb;
+}
+.main-menu a:hover {
+	text-decoration: none;
+	color: #286090;
+}
+
+
+.login:before,
+.package:before,
+.coverage:before
+.android:before
+.laptop:before,
+.contact:before,
+.status:before {
+	-webkit-font-smoothing: antialiased;
+	display: inline-block;
+	text-decoration: inherit;
+	vertical-align: text-bottom;
+}
+.login:before {
+	content: "\f427";
+	margin: 0 1px 0 0;
+	font: normal 16px/1 Genericons;
+}
+.voucher:before {
+	content: "\f413";
+	font: normal 16px/1 Genericons;
+}
+.service:before {
+	content: "\f308";
+	font: normal 16px/1 Genericons;
+}
+.spaceiklan:before {
+	content: "\f109";
+	font: normal 16px/1 Genericons;
+}
+.policy:before {
+	content: "\f424";
+	margin: -2px 1px 2px 0;
+	font: normal 16px/1 Genericons;
+}
+.contact:before {
+	content: "\f454";
+	margin: -2px 1px 2px 0;
+	font: normal 16px/1 Genericons;
+}
+.status:before {
+	content: "\f304";
+	margin: 0 1px 0 0;
+	font: normal 16px/1 Genericons;
+}
+
+
+.main{
+	width:90%;
+	margin-top:10%}}@media screen and (min-width:600px){
+.main{
+	margin-top:2%}}
+
+div.tab {
+  overflow: hidden;
+  background-color: #D6D5DD;
+  width: 100%;
+  margin-left:auto;
+  margin-right:auto;
+  border-radius:5px;
+  	box-shadow:0 10px 15px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19)
+}
+
+div.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 5px 5px;
+  transition: 0.3s;
+  font-weight:bold;
+  height: 35px;
+  width:50%;
+  	box-shadow:0 10px 15px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19)
+}
+
+div.tab button:hover {
+  background-color: #AFADB9;
+}
+
+div.tab button.active {
+  background-color: #008B8B;
+  color: #FFF;
+}
+
+.tabcontent {
+  display: none;
+  border-top: none;
+}
+
