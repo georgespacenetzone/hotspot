@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <title>معلومات الحساب</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script>
+        setAuthState(true);
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.querySelector('form[name="logout"]');
+            if(form) {
+                form.addEventListener('submit', () => setAuthState(false));
+            }
+        });
+    </script>
+		<script language="JavaScript">
+
+function arabicBytes(original)
+{
+	var rv;
+	var int1 = original;
+	var GB = " جيجابايت ", MB = " ميجابايت ", KB = " كيلوبايت ", B = " بايت ";
+	if(int1 < 998) rv = int1 + B;
+	else if(int1 < (998 * 998)) rv = Math.round(int1 / 998) + KB; 
+	else if(int1 < (998 * 998 * 998)) rv = Math.round(int1 / (998 * 998)) + MB;
+	else rv = Math.round(int1 / (998 * 998 * 998)) + GB;
+	return rv;					 
+}
+</script>
+<script language="JavaScript">
+
+function readablizeBytes(bytes) {
+var s = ['bytes', 'kb', 'MB', 'GB', 'TB', 'PB'];
+var e = Math.floor(Math.log(bytes)/Math.log(998));
+return (bytes/Math.pow(998, Math.floor(e))).toFixed(2)+" "+s[e];
+}
+
+</script>
+</head>
+
+<body class="rtl">
+    <div class="moon-glow"></div>
+    <div class="main-card">
+
+        <div class="header-section">
+            <h1 class="title-text text-primary">معلومات الحساب</h1>
+        </div>
+
+        <div class="status-grid">
+            <div class="stat-item">
+                <span class="stat-key">🙍 إسم المستخدم</span>
+                <span class="stat-val" dir="ltr">$(username)</span>
+            </div>
+			     <div class="stat-item">
+           
+				
+                <span class="stat-item" dir="ltr"><script>
+var bag = parseInt(($(limit-bytes-total)-($(bytes-out)+$(bytes-in)))/1073741824);
+var bam = parseInt(((($(limit-bytes-total)-($(bytes-out)+$(bytes-in)))/1073741824)-bag)*1024);
+var monowg = 14-bag;
+var monowm = parseInt((14-(($(limit-bytes-total)-($(bytes-out)+$(bytes-in)))/1073741824))*1024);
+
+document.write("متبقي لديك " +bag+" جيجابايت و "+bam+" ميجابايت ");
+</script></span>
+             <p id="Alnesr">
+              </div>
+             <div class="stat-item">
+                <span class="stat-key">🌐الرصيد المستخدم</span>
+                <span class="stat-val" dir="ltr" id="byteLeft"><script type="text/javascript">
+                        var a="$(bytes-out)";
+                        var c="$(bytes-in)";
+                        //var b="$(limit-bytes-in)";
+						var b="$(remain-bytes-total)";
+						var INFO="$(remain-bytes-total-nice)";
+if(INFO=="unlimited"){document.write(" مفتوح ")}else{document.write(readablizeBytes(aaddd(b,a,c)))};
+                       
+                    </script></span>
+            </div>
+			            <div class="stat-item">
+                <span class="stat-key">🌐 عنوان الأيبي</span>
+                <span class="stat-val" dir="ltr">$(ip)</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-key">💻 عنوان الماك</span>
+                <span class="stat-val" dir="ltr">$(mac)</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-key">🕓 وقت الإتصال</span>
+                <span class="stat-val" dir="ltr" id="timeLeft"><script type="text/javascript">var INFO1="$(uptime)";
+if(INFO1==""){document.write("><span   class="+"valuee"+"> مفتوح </span> ")}else{document.write("<span id="+"timeLeft"+" class="+"valuee"+"> $(session-time-left) </span>")};</script></span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-key">🕓 مده الباقه</span>
+				
+                <span class="stat-val" dir="ltr" id="timeLeft2"><script type="text/javascript">var INFO2="$(session-time-left)";
+if(INFO2==""){document.write("<span class="+"valuee"+"> مفتوح </span> ")}else{document.write("<span id="+"timeLeft2"+" class="+"valuee"+"> $(session-time-left) </span>")};</script></span>
+            </div>
+        </div>
+
+        <div class="hidden">$(if login-by-mac != 'yes')</div>
+            <form action="$(link-logout)?erase-cookie=yes" name="logout" method="post">
+                <button type="submit" class="cta-btn btn-logout">تسجيل الخروج</button>
+            </form>
+        <div class="hidden">$(endif)</div>
+    </div>
+
+    <!-- Bottom Navbar -->
+    <div class="bottom-navbar">
+        <a href="login.html" class="nav-item active">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            <span>الرئيسية</span>
+        </a>
+        <a href="http://192.168.2.1/" class="nav-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+            </svg>
+            <span>بث</span>
+        </a>
+        <a href="http://192.168.2.1/" class="nav-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="10" r="3" />
+                <path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 7 8 11.7z" />
+            </svg>
+            <span>مجله</span>
+        </a>
+        <a href="contact.html" class="nav-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+            <span>تواصل معنا</span>
+        </a>
+    </div>
+
+ <script>
+!function(a,b){
+"object"==typeof exports?module.exports=b():"function"==typeof define&&define.amd?define([],b):a.Circles=b()}(this,function(){"use strict";
+var a=window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||window.oRequestAnimationFrame||window.msRequestAnimationFrame||function(a){setTimeout(a,1e3/60)},b=function(a){var b=a.id;
+if(this._el=document.getElementById(b),null!==this._el){this._radius=a.radius||10,this._duration=void 0===a.duration?500:a.duration,this._value=0,this._maxValue=a.maxValue||100,this._text=void 0===a.text?function(a){return this.htmlifyNumber(a)}:a.text,this._strokeWidth=a.width||10,this._colors=a.colors||["#EEE","#F00"],this._svg=null,this._movingPath=null,this._wrapContainer=null,this._textContainer=null,this._wrpClass=a.wrpClass||"circles-wrp",this._textClass=a.textClass||"circles-text",this._valClass=a.valueStrokeClass||"circles-valueStroke",this._maxValClass=a.maxValueStrokeClass||"circles-maxValueStroke",this._styleWrapper=a.styleWrapper===!1?!1:!0,this._styleText=a.styleText===!1?!1:!0;
+var c=Math.PI/180*270;
+this._start=-Math.PI/180*90,this._startPrecise=this._precise(this._start),this._circ=c-this._start,this._generate().update(a.value||0)}};
+return b.prototype={VERSION:"0.0.6",_generate:function(){return this._svgSize=2*this._radius,this._radiusAdjusted=this._radius-this._strokeWidth/2,this._generateSvg()._generateText()._generateWrapper(),this._el.innerHTML="",this._el.appendChild(this._wrapContainer),this},_setPercentage:function(a){this._movingPath.setAttribute("d",this._calculatePath(a,!0)),this._textContainer.innerHTML=this._getText(this.getValueFromPercent(a))},_generateWrapper:function(){return this._wrapContainer=document.createElement("div"),this._wrapContainer.className=this._wrpClass,this._styleWrapper&&(this._wrapContainer.style.position="relative",this._wrapContainer.style.display="inline-block"),this._wrapContainer.appendChild(this._svg),this._wrapContainer.appendChild(this._textContainer),this},_generateText:function(){if(this._textContainer=document.createElement("div"),this._textContainer.className=this._textClass,this._styleText){var a={position:"absolute",top:0,left:0,textAlign:"center",width:"100%",fontSize:.4*this._radius+"px",height:this._svgSize+"px",lineHeight:this._svgSize+"px"};
+for(var b in a)this._textContainer.style[b]=a[b]}return this._textContainer.innerHTML=this._getText(0),this},_getText:function(a){
+return this._text?(void 0===a&&(a=this._value),a=parseFloat(a.toFixed(2)),"function"==typeof this._text?this._text.call(this,a):this._text):""},_generateSvg:function(){return this._svg=document.createElementNS("http://www.w3.org/2000/svg","svg"),this._svg.setAttribute("xmlns","http://www.w3.org/2000/svg"),this._svg.setAttribute("width",this._svgSize),this._svg.setAttribute("height",this._svgSize),this._generatePath(100,!1,this._colors[0],this._maxValClass)._generatePath(1,!0,this._colors[1],this._valClass),this._movingPath=this._svg.getElementsByTagName("path")[1],this},_generatePath:function(a,b,c,d){var e=document.createElementNS("http://www.w3.org/2000/svg","path");
+return e.setAttribute("fill","transparent"),e.setAttribute("stroke",c),e.setAttribute("stroke-width",this._strokeWidth),e.setAttribute("d",this._calculatePath(a,b)),e.setAttribute("class",d),this._svg.appendChild(e),this},_calculatePath:function(a,b){var c=this._start+a/100*this._circ,d=this._precise(c);
+return this._arc(d,b)},_arc:function(a,b){
+var c=a-.001,d=a-this._startPrecise<Math.PI?0:1;
+return["M",this._radius+this._radiusAdjusted*Math.cos(this._startPrecise),this._radius+this._radiusAdjusted*Math.sin(this._startPrecise),"A",this._radiusAdjusted,this._radiusAdjusted,0,d,1,this._radius+this._radiusAdjusted*Math.cos(c),this._radius+this._radiusAdjusted*Math.sin(c),b?"":"Z"].join(" ")},_precise:function(a){return Math.round(1e3*a)/1e3},htmlifyNumber:function(a,b,c){b=b||"circles-integer",c=c||"circles-decimals";
+
+var d=(a+"").split("."),e='<span class="'+b+'">'+d[0]+"</span>";
+return d.length>1&&(e+='.<span class="'+c+'">'+d[1].substring(0,2)+"</span>"),e},updateRadius:function(a){return this._radius=a,this._generate().update(!0)},updateWidth:function(a){return this._strokeWidth=a,this._generate().update(!0)},updateColors:function(a){this._colors=a;
+var b=this._svg.getElementsByTagName("path");
+return b[0].setAttribute("stroke",a[0]),b[1].setAttribute("stroke",a[1]),this},getPercent:function(){return 100*this._value/this._maxValue},getValueFromPercent:function(a){return this._maxValue*a/100},getValue:function(){return this._value},getMaxValue:function(){return this._maxValue},update:function(b,c){if(b===!0)return this._setPercentage(this.getPercent()),this;
+if(this._value==b||isNaN(b))return this;
+void 0===c&&(c=this._duration);
+var d,e,f,g,h=this,i=h.getPercent(),j=1;
+return this._value=Math.min(this._maxValue,Math.max(0,b)),c?(d=h.getPercent(),e=d>i,j+=d%1,f=Math.floor(Math.abs(d-i)/j),g=c/f,function k(b){if(e?i+=j:i-=j,e&&i>=d||!e&&d>=i)return void a(function(){h._setPercentage(d)});
+a(function(){h._setPercentage(i)});
+var c=Date.now(),f=c-b;
+f>=g?k(c):setTimeout(function(){k(Date.now())},g-f)}(Date.now()),this):(this._setPercentage(this.getPercent()),this)}},b.create=function(a){return new b(a)},b});
+
+
+//#########منطقة التعديل#########
+
+var ID='Alnesr';
+var RADIUS=60;
+var VA=("$(remain-bytes-total)").replace(" GB","").replace(" MB","").replace(" KB","")/$(limit-bytes-total)*100;
+var VALUE=VA;
+var MAXVALUE=100;
+var WIDTH=15;
+
+var TEXT=function(VALUE){return VALUE + '%';};
+
+
+
+if(VA<101){var COLORS=['#eee', '#0dff00'];};
+if(VA<81){var COLORS=['#eee', '#C3EA04'];};
+if(VA<51){var COLORS=['#eee', '#F38A04'];};
+if(VA<21){var COLORS=['#eee', '#FB0D02'];};
+var DURATION=500;
+
+//########منطقة التعديل بيانات##########
+
+
+
+
+
+Circles.create({
+  id:           ID,
+  radius:       RADIUS,
+  value:        VALUE,
+  maxValue:     MAXVALUE,
+  width:        WIDTH,
+  text:         TEXT,
+  colors:       COLORS,
+  duration:     DURATION,
+  wrpClass:     'circles-wrp',
+  textClass:    'circles-text',
+  styleWrapper: true,
+  styleText:    true
+})
+
+
+
+</script>
+
+<script type="text/javascript">
+document.getElementById("timeLeft").innerHTML = "$(uptime)".replace("w", " أسبوع , ").replace("d", " يوم , ").replace("h", " ساعة , ").replace("m", " دقيقة , ").replace("s", " ثانية ");
+</script>
+<script type="text/javascript">
+document.getElementById("timeLeft2").innerHTML = "$(session-time-left)".replace("w", " أسبوع , ").replace("d", " يوم , ").replace("h", " ساعة , ").replace("m", " دقيقة , ").replace("s", " ثانية ");
+</script>
+<script type="text/javascript">
+
+document.getElementById("byteLeft").innerHTML = "$(bytes-in-nice)".replace("bytes", "بايت").replace("KiB", " كيلو بايت").replace("Bytes", "بايت ").replace("TiB", " تيرا بايت ").replace("mib", " ميجا ").replace("MiB", " ميجا بايت").replace("GiB", " جيجا بايت ").replace("PiB", " بيليون بايت").replace("NaN", " مفتوح");
+<!-- document.getElementById("byteLeft").innerHTML = "NaN".replace("NaN", " مفتوح"); -->
+
+document.getElementById("byteLeft3").innerHTML = "$(bytes-total-nice)".replace("bytes", "بايت").replace("KiB", " كيلو بايت").replace("Bytes", "بايت ").replace("TiB", " تيرا بايت ").replace("mib", " ميجا ").replace("MiB", " ميجا بايت").replace("GiB", " جيجا بايت ").replace("PiB", " بيليون بايت").replace("NaN", " مفتوح");
+<!-- document.getElementById("byteLeft").innerHTML = "NaN".replace("NaN", " مفتوح"); -->
+<!-- document.getElementById("byteLeft4").innerHTML = "$(bytes-out-nice)".replace("bytes", "بايت").replace("KiB", " كيلو بايت").replace("Bytes", "بايت ").replace("TiB", " تيرا بايت ").replace("mib", " ميجا ").replace("MiB", " ميجا بايت").replace("GiB", " جيجا بايت ").replace("PiB", " بيليون بايت").replace("NaN", " مفتوح"); -->
+<!-- document.getElementById("byteLeft").innerHTML = "NaN".replace("NaN", " مفتوح"); -->
+document.getElementById("byteLeft5").innerHTML = "aaddd($(remain-bytes-total),$(bytes-out),$(bytes-in))".replace("bytes", "بايت").replace("KiB", " كيلو بايت").replace("Bytes", "بايت ").replace("TiB", " تيرا بايت ").replace("mib", " ميجا ").replace("MiB", " ميجا بايت").replace("GiB", " جيجا بايت ").replace("PiB", " بيليون بايت").replace("NaN", " مفتوح");
+<!-- document.getElementById("byteLeft").innerHTML = "NaN".replace("NaN", " مفتوح"); -->
+</script>
+<script type="text/javascript">
+document.getElementById("byteLeft2").innerHTML = "$(remain-bytes-total-nice)".replace("bytes", "بايت").replace("KiB", " كيلو بايت").replace("Bytes", "بايت ").replace("TiB", " تيرا بايت ").replace("mib", " ميجا ").replace("MiB", " ميجا بايت").replace("GiB", " جيجا بايت ").replace("PiB", " بيليون بايت").replace("NaN", " مفتوح");
+
+</script>
+<!-- SIGNATURE -->
+
+</body>
+
+</html>

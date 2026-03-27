@@ -1,0 +1,16 @@
+internal-error = يوجد خطأ داخلي تواصل مع المدير ($(error-orig))
+config-error = توجد مشكلة في إعدادات السيرفر تواصل مع المدير ($(error-orig))
+not-logged-in = لم تقم بتسجيل الدخول
+ippool-empty = لا يمكن الحصول على عنوان IP راجع مسئول الشبكة
+shutting-down = خدمات الهوتسبوت متوقفة في السيرفر حاليا
+user-session-limit = تخطيت الأجهزة المسموح بها في نفس الوقت
+license-session-limit = وصل السيرفر للحد الاقصى من العملاء
+wrong-mac-username = عنوان الماك غير مطابق لجهازك
+chap-missing = متصفحك الحالي لا يدعم الجافا سكربت او هناك مشكلة ف الصفحة
+invalid-username = رقم الكارت أو بيانات الدخول غير صحيحة
+invalid-mac = غير مسموح لك بالدخول من هذا الجهاز
+uptime-limit = إنتهى الوقت المخصص لك
+traffic-limit = إنتهت الباقة الخاصة بك
+radius-timeout = سيرفر الراديوس لا يستجيب للطلبات
+auth-in-progress = جاري التحقق .. أعد تحميل الصفحة
+radius-reply = $(error-orig)

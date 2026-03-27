@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>إعلان</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <meta http-equiv="refresh" content="2; url=$(link-orig)">
+    <script>
+        var popup = '';
+        function openOrig() {
+            if (window.focus) popup.focus();
+            location.href = unescape('$(link-orig-esc)');
+        }
+        function openAd() {
+            location.href = unescape('$(link-redirect-esc)');
+        }
+        function openAdvert() {
+            if (window.name != 'hotspot_advert') {
+                popup = open('$(link-redirect)', 'hotspot_advert', '');
+                setTimeout("openOrig()", 1000);
+                return;
+            }
+            setTimeout("openAd()", 1000);
+        }
+    </script>
+</head>
+<body class="rtl" onLoad="openAdvert()">
+    <div class="moon-glow"></div>
+    <div class="main-card">
+        <div class="header-section">
+            <h1 class="title-text">جارٍ التحويل...</h1>
+            <p class="subtitle-text">سيتم توجيهك الآن للمحتوى المطلوب</p>
+        </div>
+
+        <div class="text-center">
+            <p class="subtitle-text text-sm">إذا لم يتم تحويلك تلقائياً، اضغط هنا:</p>
+            <a href="$(link-redirect)" target="hotspot_advert" class="cta-btn no-decoration inline-block mt-1">فتح الإعلان يدوياً</a>
+        </div>
+    </div>
+</body>
+</html>
