@@ -3,7 +3,7 @@
   "MinimumSupportedVersion": "1.0.0",
   "IsMandatory": false,
   "ReleaseNotes": "تحديث امني مهم ",
-  "PackageUrl": "https://firebasestorage.googleapis.com/v0/b/delta-16582.firebasestorage.app/o/update.zip?alt=media&token=ae9f71f7-f195-439d-9c31-0748347b500d",
+  "PackageUrl": "https://github.com/georgespacenetzone/hotspot/raw/refs/heads/main/update.zip",
   "PackageHash": "",
   "PackageSizeBytes": 8058986,
   "PackageFormat": "zip",
