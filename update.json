@@ -2,7 +2,7 @@
   "LatestVersion": "1.0.2.0",
   "MinimumSupportedVersion": "1.0.0",
   "IsMandatory": false,
-  "ReleaseNotes": ","تحديث امني 
+  "ReleaseNotes": "تحديث امني ",
   "PackageUrl": "https://github.com/georgespacenetzone/hotspot/raw/refs/heads/main/update.zip",
   "PackageHash": "",
   "PackageSizeBytes": 8058986,
