@@ -3,7 +3,7 @@
   "MinimumSupportedVersion": "1.0.0",
   "IsMandatory": false,
   "ReleaseNotes":"تم تحسين سرعة البرنامج\r\nتم إصلاح مشكلة خصم الفاتورة\r\nتم إصلاح مشكلة مرتجع المبيعات\r\nتم تحسين التحديثات الأونلاين",
-  "PackageUrl": "https://github.com/georgespacenetzone/hotspot/raw/refs/heads/main/update.zip",
+  "PackageUrl": "https://raw.githubusercontent.com/georgespacenetzone/hotspot/main/update.zip",
   "PackageHash": "",
   "PackageSizeBytes": 8058986,
   "PackageFormat": "zip",
