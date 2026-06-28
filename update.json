@@ -1,5 +1,5 @@
 {
-  "LatestVersion": "1.0.4.0",
+  "LatestVersion": "1.0.5.0",
   "MinimumSupportedVersion": "1.0.0",
   "IsMandatory": false,
   "ReleaseNotes":"تم تحسين سرعة البرنامج\r\nتم إصلاح مشكلة خصم الفاتورة\r\nتم إصلاح مشكلة مرتجع المبيعات\r\nتم تحسين التحديثات الأونلاين",
